@@ -46,6 +46,7 @@ st.markdown("""
         position: sticky;
         top: 0;
         z-index: 999;
+        margin: 0rem -5rem 2rem -5rem;
     }
 
     .brand-text {
