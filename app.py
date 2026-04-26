@@ -5,28 +5,28 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 import os
 
-# ==================== PAGE CONFIG ====================
 st.set_page_config(
     page_title="MediAI | Clinical Decision Support",
     page_icon="⚕️",
     layout="wide"
 )
 
-# ==================== LOAD DATA ====================
 @st.cache_data
 def load_data():
     try:
         train = pd.read_csv('Training.csv')
         train.columns = [col.strip() for col in train.columns]
 
-        # 🔥 IMPORTANT: Shuffle dataset to remove bias
+        
         train = train.sample(frac=1, random_state=42).reset_index(drop=True)
 
-        # Doctor dataset (optional)
+        
         if os.path.exists('doctors_dataset.csv'):
-            docs = pd.read_csv('doctors_dataset.csv', names=['Disease', 'Specialist', 'Description'])
+            docs = pd.read_csv('doctors_dataset.csv', names=[
+                               'Disease', 'Specialist', 'Description'])
         else:
-            docs = pd.DataFrame(columns=['Disease', 'Specialist', 'Description'])
+            docs = pd.DataFrame(
+                columns=['Disease', 'Specialist', 'Description'])
 
         X = train.iloc[:, :-1]
         y = train.iloc[:, -1]
@@ -34,7 +34,7 @@ def load_data():
         le = LabelEncoder()
         y_encoded = le.fit_transform(y)
 
-        # 🔥 BETTER MODEL
+        
         model = RandomForestClassifier(n_estimators=100, random_state=42)
         model.fit(X, y_encoded)
 
@@ -47,16 +47,16 @@ def load_data():
 
 model, le, symptom_cols, doc_dataset, train_data = load_data()
 
-# ==================== SYMPTOM MAPPING ====================
+
 symptom_map = {
     col.replace('_', ' ').title(): col
     for col in symptom_cols
 }
 
-# ==================== HEADER ====================
+
 st.title("⚕️ MediAI - Clinical Decision Support System")
 
-# ==================== UI ====================
+
 col1, col2 = st.columns([1, 1.2])
 
 with col1:
@@ -75,7 +75,7 @@ with col2:
             st.warning("Please select at least one symptom.")
         else:
             try:
-                # ==================== INPUT VECTOR ====================
+                
                 input_vector = np.zeros(len(symptom_cols))
 
                 for s in selected_display:
@@ -83,18 +83,14 @@ with col2:
                         actual_col = symptom_map[s]
                         idx = list(symptom_cols).index(actual_col)
                         input_vector[idx] = 1
-
-                # 🔍 DEBUG (optional)
-                # st.write("Active symptoms:", int(np.sum(input_vector)))
-
-                # ==================== FIX: Use DataFrame ====================
+                
                 input_df = pd.DataFrame([input_vector], columns=symptom_cols)
 
-                # ==================== PREDICTION ====================
+                
                 prediction = model.predict(input_df)[0]
                 disease = le.inverse_transform([prediction])[0]
 
-                # ==================== PROBABILITY (TOP 3) ====================
+                
                 probs = model.predict_proba(input_df)[0]
                 top_indices = np.argsort(probs)[-3:][::-1]
 
@@ -102,14 +98,16 @@ with col2:
 
                 st.subheader("Top Possible Conditions")
                 for idx in top_indices:
-                    st.write(f"{le.inverse_transform([idx])[0]} → {probs[idx]*100:.2f}%")
+                    st.write(
+                        f"{le.inverse_transform([idx])[0]} → {probs[idx]*100:.2f}%")
 
-                # ==================== CONFIDENCE ====================
+                
                 disease_data = train_data[train_data.iloc[:, -1] == disease]
 
                 if not disease_data.empty:
                     expected = sum(disease_data.iloc[:, :-1].iloc[0] > 0)
-                    confidence = min(100, (len(selected_display) / expected * 100)) if expected > 0 else 75
+                    confidence = min(
+                        100, (len(selected_display) / expected * 100)) if expected > 0 else 75
                 else:
                     confidence = 75
                     expected = 0
@@ -117,10 +115,11 @@ with col2:
                 st.info(f"Confidence: {confidence:.2f}%")
                 st.write(f"Evidence Match: {len(selected_display)}/{expected}")
 
-                # ==================== DOCTOR RECOMMENDATION ====================
+                
                 st.subheader("Recommended Specialist")
 
-                match = doc_dataset[doc_dataset.iloc[:, 0].str.strip() == disease]
+                match = doc_dataset[doc_dataset.iloc[:,
+                                                     0].str.strip() == disease]
 
                 if not match.empty:
                     for _, row in match.iterrows():
@@ -144,6 +143,5 @@ with col2:
     else:
         st.info("Select symptoms and click 'Generate Diagnosis'")
 
-# ==================== FOOTER ====================
 st.markdown("---")
-st.caption("⚠️ Disclaimer: This system is for educational purposes only.")
+st.caption("!Disclaimer: This system is for educational purposes only.")
