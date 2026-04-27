@@ -1,61 +1,56 @@
-## 🤖 HealthCare ChatBot
-Major -1 
-(4th year - 7th semester)
+# 🤖 HealthCare ChatBot
 
-Health Care Chat-Bot is a Healthcare Domain Chatbot to simulate the predictions of a General Physician. 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://medial.streamlit.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/codedbygunnaj/HealthChatbot)
 
-ChatBot can be described as software that can chat with people using artificial intelligence. These software are used to perform tasks such as quickly responding to users, informing them, helping to purchase products and providing better service to customers. We have made a healthcare based chatbot. 
+**Health Care Chat-Bot** is a Healthcare Domain Chatbot designed to simulate the predictions and diagnostic process of a General Physician. 
 
-The three main areas where chatbots can be used are diagnostics, patient engagement outside medical facilities, and mental health. In our major we are working on diagnostic.
+Chatbots are artificially intelligent software designed to interact with users, providing quick responses, information, and better services. We have built a healthcare-based chatbot focused specifically on the **diagnostic** aspect of medical care.
 
-## :page_with_curl: Brief
-A chatbot is an artificially intelligent creature which can converse with humans. This could be text-based, or a spoken conversation. In our project we will be using Python as it is currently the most popular language for creating an AI chatbot. In the middle of AI chatbot, architecture is the Natural Language Processing (NLP) layer.
+---
 
-This project aims to build an user-friendly healthcare chatbot which facilitates the job of a healthcare provider and helps improve their performance by interacting with users in a human-like way.
+## 📄 Brief
 
-Through chatbots one can communicate with text or voice interface and get reply through artificial intelligence
+A chatbot is an artificially intelligent interface that can converse with humans via text or voice. At the core of an AI chatbot's architecture is the Natural Language Processing (NLP) layer. Python is currently the most popular language for creating such AI systems, which is what we used for our backend logic and deployment.
 
-Typically, a chat bot will communicate with a real person. 
-Chat bots are used in applications such as E-commerce customer service, Call centres, Internet gaming,etc.
+This project aims to build a user-friendly healthcare chatbot that facilitates the job of healthcare providers and helps improve patient engagement by interacting with users in a human-like way. 
 
-Chatbots are programs built to automatically engage with received messages. Chatbots can be programmed to respond the same way each time, to respond differently to messages containing certain keywords and even to use machine learning to adapt their responses to fit the situation. 
+A growing number of hospitals, nursing homes, and private clinics are utilizing online chatbots on their websites. These bots connect with potential patients, helping them find specialists, booking appointments, and pointing them toward the correct treatment. This system helps hospitals provide online healthcare support 24/7, answering general and symptom-specific questions. By asking a series of targeted questions, it guides patients to exactly what they are looking for.
 
-A developing number of hospitals, nursing homes, and even private centres, presently utilize online Chatbots for human services on their sites. These bots connect with potential patients visiting the site, helping them discover specialists, booking their appointments, and getting them access to the correct treatment.
+## 📜 Problem Statement
 
-In any case, the utilization of artificial intelligence in an industry where individuals’ lives could be in question, still starts misgivings in individuals. It brings up issues about whether the task mentioned above ought to be assigned to human staff. This healthcare chatbot system will help hospitals to provide healthcare support online 24 x 7, it answers deep as well as general questions. It also helps to generate leads and automatically delivers the information of leads to sales. By asking the questions in series it helps patients by guiding what exactly he/she is looking for. 
+During challenging times like pandemics or localized outbreaks, getting regular check-ups and continuing preventive visits (like annual physicals) can be difficult. Providers often defer elective visits, and for some patients, consulting a doctor in person isn't immediately possible. 
 
-## :scroll: Problem Statement
-During the pandemic, it is more important than ever to get your regular check-ups and to continue to take prescription medications. The healthier you are, the more likely you are to recover quickly from an illness.
+In such scenarios, to avoid the spread of false medical information and panic, our project steps in to help. It provides a reliable, accessible, and quick preliminary diagnostic tool based on user symptoms.
 
-In this time patients or health care workers within their practice, providers are deferring elective and preventive visits, such as annual physicals. For some, it is not possible to consult online. In this case, to avoid false information, our project can be of help. 
+## 🗂️ Features
 
-## :card_index: Features
-- Register Screen.
-- Sign-in Screen.
-- Generates database for user login system.
-- Offers you a GUI Based Chatbot for patients for diagnosing. [A pragmatic Approach for Diagnosis]
-- Reccomends an appropriate doctor to you for the following symptom.
+- **Live Web Deployment:** Easily accessible UI deployed via Streamlit.
+- **Symptom Diagnosis:** Offers a pragmatic, ML-driven approach to diagnosing potential illnesses based on user inputs.
+- **Doctor Recommendation:** Recommends an appropriate specialist/doctor for the identified symptoms.
+- **24/7 Availability:** Continuous, reliable healthcare support simulation.
 
-## :scroll: Modules Used
-Our	program	uses a number of python modules to work properly:
+## 🛠️ Tech Stack & Modules Used
 
-1. tkinter 
-1. os
-1. webbrowser
-1. numpy
-1. pandas
-1. matplotlib
+Our application uses a robust set of Python libraries to function seamlessly on the web:
 
-## :page_with_curl: Algorithm
-We have used Decision tree for our health care based chat bot.
+1. **Streamlit** (For the interactive web-based GUI and deployment)
+2. **Scikit-learn** (For the Machine Learning model)
+3. **Numpy**
+4. **Pandas**
+5. **Matplotlib**
+6. **OS / Webbrowser**
 
-Decision Tree is a Supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems. It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.It usually mimic human thinking ability while making a decision, so it is easy to understand.
+## 🧠 Algorithm
 
+We have used the **Decision Tree Classifier** for our healthcare-based chatbot.
 
-## :suspect: Project Members
+A Decision Tree is a Supervised learning technique used for both classification and regression problems, though it is highly preferred for classification. It is a tree-structured classifier where internal nodes represent the features of a dataset, branches represent the decision rules, and each leaf node represents the outcome. It mimics human thinking and decision-making abilities, making the diagnostic logic easy to trace and understand.
 
-- Anushka Bansal - 500067844 - R164218014
-- Shreya Sharma - 500068573 - R164218070
-- Silvi - 500069092 - R164218072
-- Ishika Agrawal - 500071154 - R164218097
+## 👥 Project Members
 
+- **Gunaj Chugh**
+- **Brinda Gupta** - **Atul Sharma** - **Kabeer Sachdev**
+
+---
+*Check out the live project here: [medial.streamlit.app](https://medial.streamlit.app/)*
